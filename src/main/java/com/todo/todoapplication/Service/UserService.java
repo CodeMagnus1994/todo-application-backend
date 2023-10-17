@@ -34,12 +34,24 @@ public class UserService {
 
         if(existingUser != null) {
 
-            existingUser.setUserName(userModel.getUserName());
-            existingUser.setFirstName(userModel.getFirstName());
-            existingUser.setLastName(userModel.getLastName());
-            existingUser.setPassword(userModel.getPassword());
+            if(userModel.getFirstName() != null)
+                existingUser.setFirstName(userModel.getFirstName());
+
+
+            if(userModel.getLastName() != null)
+                existingUser.setLastName(userModel.getLastName());
+
+
+            if(userModel.getPassword() != null)
+                existingUser.setPassword(userModel.getPassword());
+
+
+            if(userModel.getUserName() != null)
+                existingUser.setUserName(userModel.getUserName());
+
 
             UserModel newUpdatedUser = userRepository.save(existingUser);
+
             return newUpdatedUser;
         } else {
             return userRepository.save(existingUser);
