@@ -33,7 +33,7 @@ public class UserService {
             UserModel newUpdatedUser = userRepository.save(existingUser);
             return newUpdatedUser;
         } else {
-            return null;
+            return userRepository.save(existingUser);
         }
     }
 
