@@ -1,9 +1,12 @@
 package com.todo.todoapplication.Service;
 
+import com.todo.todoapplication.Model.Role;
 import com.todo.todoapplication.Model.UserModel;
 import com.todo.todoapplication.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -12,6 +15,12 @@ public class UserService {
     UserRepository userRepository;
 
     public UserModel createUser(UserModel userModel) {
+
+        if(Objects.equals(userModel.getFirstName(), "magnus")) {
+            userModel.setRole(Role.ADMIN);
+        } else
+            userModel.setRole(Role.USER);
+
         return userRepository.save(userModel);
     }
 

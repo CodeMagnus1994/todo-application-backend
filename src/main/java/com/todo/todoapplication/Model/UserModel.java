@@ -15,6 +15,24 @@ public class UserModel {
     private String userName;
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public UserModel(String firstName, String lastName, String userName, String password, Role role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+    }
+
+    public UserModel() {
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
     public int getId() {
         return id;
     }
@@ -49,5 +67,9 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

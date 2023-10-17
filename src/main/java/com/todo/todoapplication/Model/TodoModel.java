@@ -12,6 +12,15 @@ public class TodoModel {
     private String title;
     private String message;
 
+    public TodoModel(int rating, String title, String message) {
+        this.rating = rating;
+        this.title = title;
+        this.message = message;
+    }
+
+    public TodoModel() {
+    }
+
     public int getId() {
         return id;
     }
