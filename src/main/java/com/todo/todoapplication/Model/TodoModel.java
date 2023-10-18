@@ -11,14 +11,24 @@ public class TodoModel {
     private int rating;
     private String title;
     private String message;
+    @ManyToOne(targetEntity = UserModel.class)
+    @JoinColumn(name = "made_by", referencedColumnName = "id")
+    private UserModel made_by;
 
-    public TodoModel(int rating, String title, String message) {
+
+
+    public TodoModel() {
+    }
+
+    public TodoModel(int rating, String title, String message, UserModel made_by) {
         this.rating = rating;
         this.title = title;
         this.message = message;
+        this.made_by = made_by;
     }
 
-    public TodoModel() {
+    public UserModel getMade_by() {
+        return made_by;
     }
 
     public int getId() {
@@ -37,6 +47,8 @@ public class TodoModel {
         return message;
     }
 
+
+
     public void setRating(int rating) {
         this.rating = rating;
     }
@@ -47,5 +59,9 @@ public class TodoModel {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public void setMade_by(UserModel made_by) {
+        this.made_by = made_by;
     }
 }

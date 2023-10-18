@@ -24,9 +24,14 @@ public class TodoService {
 
         if(existingTodo != null) {
 
-            existingTodo.setTitle(updateModel.getTitle());
-            existingTodo.setMessage(updateModel.getMessage());
-            existingTodo.setRating(updateModel.getRating());
+            if(updateModel.getTitle() != null)
+                existingTodo.setTitle(updateModel.getTitle());
+
+            if(updateModel.getMessage() != null)
+                existingTodo.setMessage(updateModel.getMessage());
+
+            if(updateModel.getRating() > 0 && updateModel.getRating() <= 10)
+                existingTodo.setRating(updateModel.getRating());
 
             TodoModel newUpdatedTodoModel = todoRepository.save(existingTodo);
             return newUpdatedTodoModel;
