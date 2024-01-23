@@ -3,10 +3,12 @@ package com.todo.todoapplication.Controller;
 import com.todo.todoapplication.Model.TodoModel;
 import com.todo.todoapplication.Service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/todo/")
+@CrossOrigin(origins = "http://localhost:5173/", maxAge = 3600,allowCredentials = "true")
 public class TodoController {
 
     @Autowired
